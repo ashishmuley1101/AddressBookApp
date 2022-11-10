@@ -14,7 +14,7 @@ public class AddressBookDTO {
     public String address;
 
     @NotNull(message = "Phone No cannot be null")
-     @Pattern(regexp = "^(([0-9]{2}\s)([0-9]{10}))$",message = "Phone No Is Invalid")
+    // @Pattern(regexp = "^(([1-9]{1}[0-9]{9}))$",message = "Phone No Is Invalid")
     public long phoneNumber;
     @NotNull(message = "City cannot be null")
     @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$", message = "City Is Invalid")
