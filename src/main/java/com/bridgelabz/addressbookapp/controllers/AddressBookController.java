@@ -2,6 +2,8 @@ package com.bridgelabz.addressbookapp.controllers;
 
 
 import com.bridgelabz.addressbookapp.dto.AddressBookDTO;
+import com.bridgelabz.addressbookapp.dto.ResponseDTO;
+import com.bridgelabz.addressbookapp.model.AddressBookData;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,38 +12,51 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/addressbook")
 public class AddressBookController {
 
+    // Getting employee data in the form of JSON
     @RequestMapping(value = {"", "/", "/get"})
-    public ResponseEntity<String> getAddressBookData() {
-        return new ResponseEntity<String>("Get call success..!", HttpStatus.OK);
+    public ResponseEntity<ResponseDTO> getAddressBookData() {
+        AddressBookData addressBookData = null;
+        addressBookData = new AddressBookData(1, new AddressBookDTO("Tom", "Kamal chowk",9579112,
+                "Nagpur","MH","440017",
+                "ashishmuley1101@gmail.com"));
+        ResponseDTO respDTO = new ResponseDTO("Get Call Success", addressBookData);
+        return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
 
     // Getting Address book data using id @GetMapping
-
     @GetMapping("/get/{personId}")
-    public ResponseEntity<String> getAddressBookData(@PathVariable("personId") int personId) {
-        return new ResponseEntity<String>("Get call success for id: "+personId, HttpStatus.OK);
+    public ResponseEntity<ResponseDTO> getAddressBookData(@PathVariable("personId") int empId) {
+        AddressBookData addressBookData = null;
+        addressBookData = new AddressBookData(empId, new AddressBookDTO("jerry", "Kamal chowk",9579112,
+                "Nagpur","MH","440017",
+                "ashishmuley11011@gmail.com"));
+        ResponseDTO respDTO = new ResponseDTO("Get Call Success", addressBookData);
+        return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
 
-
-    //Creating employee data using @PostMapping
-
+    // Creating the address book data using @PostMapping Method
     @PostMapping(path = "/create")
-    public ResponseEntity<String> addEmployeePayrollData(@RequestBody AddressBookDTO addressBookDTO) {
-        return new ResponseEntity<String>("Created employee payroll data for: "+addressBookDTO, HttpStatus.OK);
+    public ResponseEntity<ResponseDTO> addAddressBookData(@RequestBody AddressBookDTO addressBookDTO) {
+        AddressBookData addressBookData = null;
+        addressBookData = new AddressBookData(1, addressBookDTO);
+        ResponseDTO respDTO = new ResponseDTO("Created Address Book Data Successfully!", addressBookDTO);
+        return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
 
-    //Updating employee data using @PutMapping
-
-    @PutMapping(path = "/update")
-    public ResponseEntity<String> updateEmployeePayrollData(@PathVariable("personId") int personId,
-                                                            @RequestBody AddressBookDTO addressBookDTO) {
-        return new ResponseEntity<String>("Updated employee payroll data for: "+addressBookDTO, HttpStatus.OK);
+    //Updating Address Book data using @PutMapping
+    @PutMapping(path = "/update/{personId}")
+    public ResponseEntity<ResponseDTO> updateAddressBookData(@PathVariable("personId") int personId,
+                                                                 @RequestBody AddressBookDTO addressBookDTO) {
+        AddressBookData addressBookData = null;
+        addressBookData = new AddressBookData(personId, addressBookDTO);
+        ResponseDTO respDTO = new ResponseDTO("Updated Address Book Data Successfully! ", addressBookDTO);
+        return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
 
-    //Deleting employee data using @DeleteMapping
-
+    //Delete Address Book data using @DeleteMapping Method
     @DeleteMapping("/delete/{personId}")
-    public ResponseEntity<String> deleteEmployeePayrollData(@PathVariable("personId") int personId) {
-        return new ResponseEntity<String>("Delete call success for id: "+personId, HttpStatus.OK);
+    public ResponseEntity<ResponseDTO> deleteAddressBoookData(@PathVariable("empId") int personId) {
+        ResponseDTO respDTO = new ResponseDTO("Deleted Address Book Data Successfully..! ", "Deleted Id :"+personId);
+        return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
 }
