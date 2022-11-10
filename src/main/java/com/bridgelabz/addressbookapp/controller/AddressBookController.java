@@ -48,17 +48,18 @@ public class AddressBookController {
     }
 
     //Updating Address Book data using @PutMapping
-    @PutMapping(path = "/update/{personId}")
-    public ResponseEntity<ResponseDTO> updateAddressBookData(@RequestBody AddressBookDTO addressBookDTO) {
+    @PutMapping("/update/{personId}")
+    public ResponseEntity<ResponseDTO> updateAddressBookData(@PathVariable("personId") int personId, @RequestBody AddressBookDTO addressBookDTO) {
         AddressBookData addressBookData = null;
-        addressBookData = addressBookService.updateAddressBookData(addressBookDTO);
+        addressBookData = addressBookService.updateAddressBookData(personId,addressBookDTO);
         ResponseDTO respDTO = new ResponseDTO("Updated Address Book Data Successfully", addressBookData);
         return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
 
+
     //Delete Address Book data using @DeleteMapping Method
     @DeleteMapping("/delete/{personId}")
-    public ResponseEntity<ResponseDTO> deleteAddressBookData(@PathVariable("empId") int personId) {
+    public ResponseEntity<ResponseDTO> deleteAddressBookData(@PathVariable("personId") int personId) {
         addressBookService.deleteAddressBookData(personId);
         ResponseDTO respDTO = new ResponseDTO("Deleted Successfully", "Deleted id: " + personId);
         return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
