@@ -22,4 +22,11 @@ public class AddressBookExceptionHandler {
         return new ResponseEntity<>(respDTO, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(AddressBookException.class)
+    public ResponseEntity<ResponseDTO> handleEmployeePayrollException(AddressBookException exception){
+        ResponseDTO respDTO = new ResponseDTO("Exception while processing REST request",
+                exception.getMessage());
+        return new ResponseEntity<>(respDTO, HttpStatus.BAD_REQUEST);
+    }
+
 }
