@@ -1,0 +1,6 @@
+2022-11-11 00:01:39.038  INFO 2348 --- [restartedMain] c.b.a.AddressBookAppApplication          : Starting AddressBookAppApplication using Java 17.0.2 on DESKTOP-KQS81UJ with PID 2348 (C:\work\BridgelabCFP\AddressBookApp\target\classes started by admin in C:\work\BridgelabCFP\AddressBookApp)
+2022-11-11 00:01:39.041 DEBUG 2348 --- [restartedMain] c.b.a.AddressBookAppApplication          : Running with Spring Boot v2.7.5, Spring v5.3.23
+2022-11-11 00:01:39.042  INFO 2348 --- [restartedMain] c.b.a.AddressBookAppApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-11-11 00:01:42.283  WARN 2348 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-11 00:01:42.689  INFO 2348 --- [restartedMain] c.b.a.AddressBookAppApplication          : Started AddressBookAppApplication in 4.271 seconds (JVM running for 5.295)
+2022-11-11 00:01:42.693  INFO 2348 --- [restartedMain] c.b.a.AddressBookAppApplication          : Address Book App Started
