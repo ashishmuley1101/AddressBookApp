@@ -3,6 +3,8 @@ package com.bridgelabz.addressbookapp.model;
 import com.bridgelabz.addressbookapp.dto.AddressBookDTO;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 public @Data class AddressBookData {
     private int personId;
     private String name;
@@ -12,6 +14,8 @@ public @Data class AddressBookData {
     private String state;
     private String zipCode;
     private String email;
+
+    private LocalDate dateOfBirth;
 
     public AddressBookData(){}
 
@@ -25,6 +29,7 @@ public @Data class AddressBookData {
         this.state=addressBookDTO.state;
         this.zipCode=addressBookDTO.address;
         this.email=addressBookDTO.email;
+        this.dateOfBirth=addressBookDTO.dateOfBirth;
     }
 
 

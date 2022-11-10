@@ -1,10 +1,12 @@
 package com.bridgelabz.addressbookapp.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.ToString;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
 
 @Data
 public @ToString class AddressBookDTO {
@@ -32,7 +34,9 @@ public @ToString class AddressBookDTO {
     @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",message = "Email Is Invalid")
     public String email;
 
-
+    @JsonFormat(pattern = "dd MMM yyyy")
+    @NotNull(message = "Date of Birth Cannot be Empty")
+    public LocalDate dateOfBirth;
 
 }
 
