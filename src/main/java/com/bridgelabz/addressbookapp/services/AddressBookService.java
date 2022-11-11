@@ -51,4 +51,9 @@ public class AddressBookService implements IAddressBookService{
         addressBookRepository.delete(addressData);
 
     }
+
+    @Override
+    public List<AddressBookData> getAddressBookDataByCity(String city) {
+        return addressBookRepository.findAddressBookByCity(city);
+    }
 }
