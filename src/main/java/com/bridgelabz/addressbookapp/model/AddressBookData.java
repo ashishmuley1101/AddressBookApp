@@ -41,7 +41,12 @@ public @Data class AddressBookData {
     public AddressBookData(){}
 
 
-    public AddressBookData(int personId, AddressBookDTO addressBookDTO) {
+
+    public AddressBookData(AddressBookDTO addressBookDTO) {
+        this.updateAddressBookData(addressBookDTO);
+    }
+
+    public void updateAddressBookData(AddressBookDTO addressBookDTO) {
         this.personId = personId;
         this.name= addressBookDTO.name;
         this.address=addressBookDTO.address;
@@ -51,9 +56,6 @@ public @Data class AddressBookData {
         this.zipCode=addressBookDTO.address;
         this.email=addressBookDTO.email;
         this.dateOfBirth=addressBookDTO.dateOfBirth;
-    }
 
-
-    public AddressBookData(AddressBookDTO addressBookDTO) {
     }
 }

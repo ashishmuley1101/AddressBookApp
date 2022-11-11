@@ -14,7 +14,7 @@ public interface IAddressBookService {
 
     //AddressBookData updateAddressBookData(AddressBookDTO addressBookDTO);
 
-    void deleteAddressBookData(int empId);
+    void deleteAddressBookData(int personId);
 
     AddressBookData updateAddressBookData(int personId, AddressBookDTO addressBookDTO);
 }
