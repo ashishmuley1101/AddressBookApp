@@ -56,4 +56,11 @@ public class AddressBookService implements IAddressBookService{
     public List<AddressBookData> getAddressBookDataByCity(String city) {
         return addressBookRepository.findAddressBookByCity(city);
     }
-}
+
+    @Override
+    public List<AddressBookData> getAddressBookDataByName(String name) {
+            return addressBookRepository.findAddressBookByName(name);
+        }
+    }
+
+

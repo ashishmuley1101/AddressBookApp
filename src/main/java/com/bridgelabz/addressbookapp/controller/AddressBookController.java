@@ -38,10 +38,21 @@ public class AddressBookController {
         return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
 
+    // Getting Address Book data by city.
     @GetMapping("/city/{city}")
-    public ResponseEntity<ResponseDTO> getDepartmentById(@PathVariable("city") String city){
+    public ResponseEntity<ResponseDTO> getAddressBookDataByCity(@PathVariable("city") String city){
         List<AddressBookData> addressBookDataList = null;
         addressBookDataList =addressBookService.getAddressBookDataByCity(city);
+        ResponseDTO respDTO = new ResponseDTO("Get call success", addressBookDataList);
+        return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
+    }
+
+
+    // Getting Address Book data by name.
+    @GetMapping("/name/{name}")
+    public ResponseEntity<ResponseDTO> getAddressBookDataByName(@PathVariable("name") String name){
+        List<AddressBookData> addressBookDataList = null;
+        addressBookDataList =addressBookService.getAddressBookDataByName(name);
         ResponseDTO respDTO = new ResponseDTO("Get call success", addressBookDataList);
         return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }

@@ -11,5 +11,10 @@ public interface IAddressBookRepository extends JpaRepository<AddressBookData,In
     @Query(value = "select * from address_book WHERE city =:city",nativeQuery = true)
     List<AddressBookData> findAddressBookByCity(String city);
 
+    @Query(value = "select * from address_book WHERE name =:name",nativeQuery = true)
+    List<AddressBookData> findAddressBookByName(String name);
+
+
+
 }
 
