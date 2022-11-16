@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+// Getting Address Book  data in the form of JSON
 
 @RestController
 @RequestMapping("/addressbook")
@@ -20,7 +21,6 @@ public class AddressBookController {
     @Autowired
     private IAddressBookService addressBookService;
 
-    // Getting employee data in the form of JSON
     @RequestMapping(value = {"", "/", "/get"})
     public ResponseEntity<ResponseDTO> getAddressBookData() {
         List<AddressBookData> addressBookDataList ;

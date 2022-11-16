@@ -6,16 +6,23 @@ import com.bridgelabz.addressbookapp.model.AddressBookData;
 import com.bridgelabz.addressbookapp.repository.IAddressBookRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @Slf4j
-public class AddressBookService implements IAddressBookService{
+public class AddressBookService implements IAddressBookService, UserDetailsService {
 
     @Autowired
     private IAddressBookRepository addressBookRepository;
+
+//    @Autowired
+//    private ModelMapper modelMapper;
 
 
     @Override
@@ -61,6 +68,16 @@ public class AddressBookService implements IAddressBookService{
     public List<AddressBookData> getAddressBookDataByName(String name) {
             return addressBookRepository.findAddressBookByName(name);
         }
+
+        // UserDetails class calling method loadUserByUsername passing the name
+        // from the login page from the browser and matching with the name and password with DB stored data
+    @Override
+    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+
+        AddressBookData addressBookData = addressBookRepository.findByName(name);
+        return new org.springframework.security.core.userdetails.User(addressBookData.getName(), addressBookData.getCity(),new ArrayList<>()) {
+        };
     }
+}
 
 

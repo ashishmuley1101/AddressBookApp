@@ -15,6 +15,6 @@ public interface IAddressBookRepository extends JpaRepository<AddressBookData,In
     List<AddressBookData> findAddressBookByName(String name);
 
 
-
+    AddressBookData findByName(String name);
 }
 

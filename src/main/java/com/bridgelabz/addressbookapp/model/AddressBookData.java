@@ -43,6 +43,7 @@ public @Data class AddressBookData {
 
 
     public AddressBookData(AddressBookDTO addressBookDTO) {
+
         this.updateAddressBookData(addressBookDTO);
     }
 
